@@ -1,0 +1,116 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+@import "leaflet.markercluster/dist/MarkerCluster.css";
+@import "leaflet.markercluster/dist/MarkerCluster.Default.css";
+
+/* Base font settings */
+body {
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Marker Pin Styles */
+.custom-school-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+.custom-school-marker:hover {
+  transform: scale(1.15);
+  z-index: 9999 !important;
+}
+
+.school-marker-inner {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.28);
+  border: 2px solid white;
+}
+
+/* Foundation distinctions */
+.school-marker-private .school-marker-inner {
+  border: 2px solid #fef08a; /* Soft gold for private */
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.school-marker-national .school-marker-inner {
+  border: 2px solid #a7f3d0;
+}
+
+/* Active Highlighted Pin */
+.school-marker-selected .school-marker-inner {
+  transform: scale(1.28);
+  border: 3px solid #facc15 !important;
+  box-shadow: 0 0 0 4px rgba(250, 204, 21, 0.4), 0 6px 14px rgba(0, 0, 0, 0.35) !important;
+  z-index: 10000 !important;
+}
+
+/* Custom District Boundary Label */
+.district-boundary-label {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #475569;
+  font-size: 11px;
+  font-weight: 600;
+  pointer-events: none !important;
+  text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 0 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+.district-boundary-label::before {
+  display: none !important;
+}
+
+/* Marker Cluster Custom styling */
+.marker-cluster-small {
+  background-color: rgba(59, 130, 246, 0.25) !important;
+}
+.marker-cluster-small div {
+  background-color: rgba(37, 99, 235, 0.85) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+.marker-cluster-medium {
+  background-color: rgba(99, 102, 241, 0.25) !important;
+}
+.marker-cluster-medium div {
+  background-color: rgba(79, 70, 229, 0.85) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+.marker-cluster-large {
+  background-color: rgba(147, 51, 234, 0.25) !important;
+}
+.marker-cluster-large div {
+  background-color: rgba(126, 34, 206, 0.85) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
